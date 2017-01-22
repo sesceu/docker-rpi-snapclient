@@ -1,7 +1,5 @@
-FROM resin/armv7hf-debian-qemu:latest
+FROM resin/rpi-raspbian:jessie
 MAINTAINER Sebastian Schneider <mail@sesc.eu>
-
-RUN [ "cross-build-start" ]
 
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -14,8 +12,6 @@ RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_versi
     ; apt-get update \
     && apt-get -f install -y \
     && rm -rf /var/lib/apt/lists/*
-
-RUN [ "cross-build-end" ]
 
 ENTRYPOINT ["snapclient"]
 CMD ["-h", "snapserver"]
