@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:jessie
+FROM resin/rpi-raspbian:latest
 MAINTAINER Sebastian Schneider <mail@sesc.eu>
 
 RUN apt-get update \
@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*
 
-ENV snapcast_version 0.10.0
+ENV snapcast_version 0.15.0
 RUN  wget https://github.com/badaix/snapcast/releases/download/v${snapcast_version}/snapclient_${snapcast_version}_armhf.deb \
     && dpkg -i snapclient_${snapcast_version}_armhf.deb \
     ; apt-get update \
